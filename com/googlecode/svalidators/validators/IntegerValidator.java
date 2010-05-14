@@ -19,8 +19,8 @@ public class IntegerValidator extends NumericValidator {
   }
 
   /**
-   * Creates an Integer validator to check if a value is an integer
-   * @param value The value to check. If null it will use the components text value
+   * Creates an Integer validator with a {@link #value} and set {@link #allowEmpty}
+   * @param value The value to check.
    * @param allowEmpty If empty value is allowed
    */
   public IntegerValidator(String value, boolean allowEmpty) {

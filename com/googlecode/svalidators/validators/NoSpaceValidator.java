@@ -5,7 +5,7 @@
 package com.googlecode.svalidators.validators;
 
 /**
- *
+ * NoSpaceValidator.Validates that a value includes no spaces
  * @author ssoldatos
  */
 public class NoSpaceValidator extends SValidator {
@@ -19,7 +19,7 @@ public class NoSpaceValidator extends SValidator {
   }
 
   /**
-   * Creates a NoSpaceValidator with a value and sets if empty value is allowed
+   * Creates a NoSpaceValidator with a {@link #value} and sets {@link #allowEmpty}
    * @param value The value to validate
    * @param allowEmpty If empty value is allowed
    */

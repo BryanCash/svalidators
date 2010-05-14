@@ -9,8 +9,8 @@ import java.util.Collection;
 import com.googlecode.svalidators.exceptions.AttributeException;
 
 /**
- * CompareValidator
- * Check if two values are equal
+ * ListValidator
+ * Check if a value is in a {@link #list}
  * @author ssoldatos
  */
 public class ListValidator extends SValidator {
@@ -21,32 +21,32 @@ public class ListValidator extends SValidator {
   /**
    * Creates a default ListValidator
    */
-  public ListValidator(){
+  public ListValidator() {
     super();
     afterCreation();
   }
 
   /**
-   * Creates a ListValidator with a value , an attribute map and
-   * if empty value is allowed
+   * Creates a ListValidator with a {@link #value} the {@link #list} and set
+   * {@link #allowEmpty}
    * @param value The value to validate
-   * @param list
+   * @param list The list of valid values
    * @param allowEmpty If empty value is allowed
    */
-  public ListValidator(String value, Collection<Object> list, boolean allowEmpty)  {
-  super();
-  this.value = value;
-  this.list = list;
-  this.allowEmpty = allowEmpty;
+  public ListValidator(String value, Collection<Object> list, boolean allowEmpty) {
+    super();
+    this.value = value;
+    this.list = list;
+    this.allowEmpty = allowEmpty;
     afterCreation();
   }
 
   @Override
-  public boolean validate()  {
-   int empty = validateEmpty();
+  public boolean validate() {
+    int empty = validateEmpty();
     if (empty == SValidator.EMPTY_ALLOWED) {
       return true;
-    } else if(empty == SValidator.EMPTY_NOTALLOWED){
+    } else if (empty == SValidator.EMPTY_NOTALLOWED) {
       return false;
     }
     for (Object ob : getList()) {
@@ -59,7 +59,7 @@ public class ListValidator extends SValidator {
 
   @Override
   protected void setErrorMessage() {
-    errorMessage =  "The value must be in the predefined list";
+    errorMessage = "The value must be in the predefined list";
   }
 
   @Override
@@ -68,6 +68,7 @@ public class ListValidator extends SValidator {
   }
 
   /**
+   * Gets the {@link #list} of valid values
    * @return the list
    */
   public Collection<Object> getList() {
@@ -75,11 +76,11 @@ public class ListValidator extends SValidator {
   }
 
   /**
+   * Sets the {@link #list} of valid values
    * @param list the list to set
    */
   public void setList(Collection<Object> list) {
     this.list = list;
     setErrorMessage();
   }
-
 }

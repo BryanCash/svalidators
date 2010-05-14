@@ -5,8 +5,11 @@
 package com.googlecode.svalidators.validators;
 
 /**
- * CompareValidator
- * Check if two values are equal
+ * Creates a default LengthValidator<br />
+ * If {@link #min} is provided the validator checks if the value has a length at least min<br />
+ * If {@link #max} is provided the validator checks if the value has a length not greater than max<br />
+ * If {@link #min} & {@link #max} are provided the validator checks if the value has a length between min and max<br />
+ * If {@link #length} is provided the validator checks if the value has a length exactly the same<br />
  * @author ssoldatos
  */
 public class LengthValidator extends SValidator {
@@ -18,28 +21,24 @@ public class LengthValidator extends SValidator {
   /** The length allowed **/
   private int length = 0;
 
-
   /**
-   * Creates a default LengthValidator<br />
-   * If min is provided the validator checks if the value has a length at least min<br />
-   * If max is provided the validator checks if the value has a length not greater than max<br />
-   * If min & max is provided the validator checks if the value has a length between min and max<br />
-   * If length is provided the validator checks if the value has a length exactly the same<br />
+   * Creates a default LengthValidator
    */
-  public LengthValidator(){
+  public LengthValidator() {
     super();
     afterCreation();
   }
 
   /**
-   * 
-   * @param value
-   * @param length
-   * @param max
-   * @param min
-   * @param allowEmpty
+   * Creates a LengthValidator with a {@link #value} , {@link #min},
+   * {@link #max}, {@link #length}
+   * @param value The value to validate
+   * @param length The valid length. If 0 is ignored
+   * @param max The maximum valid length. If 0 is ignored
+   * @param min The minimum valid length. If 0 is ignored
+   * @param allowEmpty If empty value is allowed
    */
-  public LengthValidator(String value, int length, int max, int min, boolean allowEmpty){
+  public LengthValidator(String value, int length, int max, int min, boolean allowEmpty) {
     super();
     this.value = value;
     this.length = length;
@@ -54,7 +53,7 @@ public class LengthValidator extends SValidator {
     int empty = validateEmpty();
     if (empty == SValidator.EMPTY_ALLOWED) {
       return true;
-    } else if(empty == SValidator.EMPTY_NOTALLOWED){
+    } else if (empty == SValidator.EMPTY_NOTALLOWED) {
       return false;
     }
     if (!(value instanceof String)) {
@@ -94,6 +93,7 @@ public class LengthValidator extends SValidator {
   }
 
   /**
+   * Gets the {@link #min}
    * @return the min
    */
   public int getMin() {
@@ -101,6 +101,7 @@ public class LengthValidator extends SValidator {
   }
 
   /**
+   * Sets the {@link #min}
    * @param min the min to set
    */
   public void setMin(int min) {
@@ -110,6 +111,7 @@ public class LengthValidator extends SValidator {
   }
 
   /**
+   * Gets the {@link #max}
    * @return the max
    */
   public int getMax() {
@@ -117,6 +119,7 @@ public class LengthValidator extends SValidator {
   }
 
   /**
+   * Sets the {@link #max}
    * @param max the max to set
    */
   public void setMax(int max) {
@@ -126,6 +129,7 @@ public class LengthValidator extends SValidator {
   }
 
   /**
+   * Gets the {@link #length}
    * @return the length
    */
   public int getLength() {
@@ -133,6 +137,7 @@ public class LengthValidator extends SValidator {
   }
 
   /**
+   * Sets the {@link #length}
    * @param length the length to set
    */
   public void setLength(int length) {
