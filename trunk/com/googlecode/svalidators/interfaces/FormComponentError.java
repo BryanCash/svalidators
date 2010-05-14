@@ -5,7 +5,7 @@
 package com.googlecode.svalidators.interfaces;
 
 /**
- *
+ * FormComponentError interface.
  * @author ssoldatos
  */
 public interface FormComponentError {
