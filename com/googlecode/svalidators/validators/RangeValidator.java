@@ -12,8 +12,9 @@ package com.googlecode.svalidators.validators;
  * @author ssoldatos
  */
 public class RangeValidator extends NumericValidator {
-  /** The range maximum value **/
+  /** The range minimum value **/
   private double min = -Double.MAX_VALUE;
+  /** The range maximum value **/
   private double max = Double.MAX_VALUE;
 
   /**
@@ -25,10 +26,11 @@ public class RangeValidator extends NumericValidator {
   }
 
   /**
-   * Creates a numeric range validator
+   * Creates a numeric range validator with a {@link #value} and set {@link #min},
+   *  {@link #max} and  {@link #allowEmpty}
    * @param value The value to validate
-   * @param min
-   * @param max
+   * @param min The minimum valid value.
+   * @param max The maximum valid value.
    * @param allowEmpty If empty value is allowed
    */
   public RangeValidator(String value, double min, double max, boolean allowEmpty) {
@@ -68,6 +70,7 @@ public class RangeValidator extends NumericValidator {
   }
 
   /**
+   * Gets the {@link #min}
    * @return the min
    */
   public double getMin() {
@@ -75,6 +78,7 @@ public class RangeValidator extends NumericValidator {
   }
 
   /**
+   * Sets the {@link #min}
    * @param min the min to set
    */
   public void setMin(double min) {
@@ -83,6 +87,7 @@ public class RangeValidator extends NumericValidator {
   }
 
   /**
+   * Gets the {@link #max}
    * @return the max
    */
   public double getMax() {
@@ -90,6 +95,7 @@ public class RangeValidator extends NumericValidator {
   }
 
   /**
+   * Sets the {@link #max}
    * @param max the max to set
    */
   public void setMax(double max) {

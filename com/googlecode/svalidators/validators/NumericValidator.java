@@ -5,7 +5,7 @@
 package com.googlecode.svalidators.validators;
 
 /**
- * Numeric validator.
+ * Numeric validator.<br />
  * Validates if a value is a number
  * @author ssoldatos
  */
@@ -20,7 +20,7 @@ public class NumericValidator extends SValidator {
   }
 
   /**
-   * Creates a numeric validator and set if empty value is allowed
+   * Creates a numeric validator with a {@link #value} and set {@link #allowEmpty}
    * @param value The value to validate
    * @param allowEmpty If empty value is allowed
    */
