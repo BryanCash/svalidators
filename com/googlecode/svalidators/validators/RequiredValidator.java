@@ -21,7 +21,7 @@ public class RequiredValidator extends SValidator {
   }
 
   /**
-   * Creates the validator.
+   * Creates the validator with a {@link #value}
    * @param value The value to check.
    */
   public RequiredValidator(String value) {

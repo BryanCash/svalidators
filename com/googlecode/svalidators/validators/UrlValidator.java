@@ -6,7 +6,7 @@ package com.googlecode.svalidators.validators;
 
 /**
  * EmailValidator
- * Validates that a value is an email address
+ * Validates that a value is an url
  * @author ssoldatos
  */
 public class UrlValidator extends RegularExpressionValidator {
@@ -24,9 +24,9 @@ public class UrlValidator extends RegularExpressionValidator {
   }
 
   /**
-   * Creates an EmailValidator with a value and set if empty value is allowed
+   * Creates an EmailValidator with a {@link #value} and set {@link #allowEmpty}
    * @param value The value to validate
-   * @param allowEmpty
+   * @param allowEmpty If empty value is allowed
    */
   public UrlValidator(String value, boolean allowEmpty) {
     super();
