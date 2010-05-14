@@ -19,8 +19,9 @@ import com.googlecode.svalidators.exceptions.AttributeException;
  * @author ssoldatos
  */
 public class RegularExpressionValidator extends SValidator {
-  /** Match exactly phrase or find **/
+  /** The regular expression **/
   private String regex = "";
+  /** If value should match exactly the regex or include it **/
   private boolean match = false;
 
   /**
@@ -33,11 +34,12 @@ public class RegularExpressionValidator extends SValidator {
 
 
   /**
-   * Creates a regular expression validator that check a value agains a regular expression
+   * Creates a regular expression validator with a {@link #value} and
+   * set {@link #regex} and {@link #match}
    * @param value The value to check
-   * @param regex
+   * @param regex The regular expression
+   * @param match If value should match exactly the regex or include it
    * @param allowEmpty If empty value is allowed
-   * @param match
    */
   public RegularExpressionValidator(String value, String regex, boolean match , boolean allowEmpty) {
     super();
@@ -76,6 +78,7 @@ public class RegularExpressionValidator extends SValidator {
   }
 
   /**
+   * Gets the {@link #regex}
    * @return the regex
    */
   public String getRegex() {
@@ -83,8 +86,9 @@ public class RegularExpressionValidator extends SValidator {
   }
 
   /**
+   * Sets the {@link #regex}
    * @param regex the regex to set
-   * @throws AttributeException 
+   * @throws AttributeException If {@link #regex} is not a valid regular expression
    */
   public void setRegex(String regex) throws AttributeException {
     try{
@@ -97,6 +101,7 @@ public class RegularExpressionValidator extends SValidator {
   }
 
   /**
+   * Gets the {@link #match}
    * @return the match
    */
   public boolean isMatch() {
@@ -104,6 +109,7 @@ public class RegularExpressionValidator extends SValidator {
   }
 
   /**
+   * Sets the {@link #match}
    * @param match the match to set
    */
   public void setMatch(boolean match) {
