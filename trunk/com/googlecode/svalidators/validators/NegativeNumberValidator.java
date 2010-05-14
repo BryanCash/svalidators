@@ -4,14 +4,13 @@
  */
 package com.googlecode.svalidators.validators;
 
-import com.googlecode.svalidators.exceptions.AttributeException;
-
 /**
- *
+ * NegativeNumberValidator. Validates that a number is a negative one.
  * @author lordovol
  */
 public class NegativeNumberValidator extends NumericValidator {
 
+  /** If zero value is valid **/
   private boolean includeZero = false;
 
   /**
@@ -23,9 +22,10 @@ public class NegativeNumberValidator extends NumericValidator {
   }
 
   /**
-   * Creates a NegativeNumberValidator with a value and set if empty is allowed
+   * Creates a NegativeNumberValidator with a {@link #value} , {@link #includeZero}
+   * and set {@link #allowEmpty}
    * @param value The value to validate
-   * @param includeZero
+   * @param includeZero If zero is valid
    * @param allowEmpty If empty value is allowed
    */
   public NegativeNumberValidator(String value, boolean includeZero, boolean allowEmpty) {
@@ -42,7 +42,7 @@ public class NegativeNumberValidator extends NumericValidator {
       return false;
     }
     Double dValue = Double.parseDouble(value);
-    if (includeZero && dValue == 0) {
+    if (isIncludeZero() && dValue == 0) {
       return true;
     } else {
       if (dValue < 0) {
@@ -61,5 +61,21 @@ public class NegativeNumberValidator extends NumericValidator {
   @Override
   public String getType() {
     return SValidator.NEGATIVE;
+  }
+
+  /**
+   * Gets {@link #includeZero}
+   * @return the includeZero
+   */
+  public boolean isIncludeZero() {
+    return includeZero;
+  }
+
+  /**
+   * Sets {@link #includeZero}
+   * @param includeZero the includeZero to set
+   */
+  public void setIncludeZero(boolean includeZero) {
+    this.includeZero = includeZero;
   }
 }
