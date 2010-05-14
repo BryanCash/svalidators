@@ -26,7 +26,7 @@ import com.googlecode.svalidators.validators.RequiredValidator;
 import com.googlecode.svalidators.validators.SValidator;
 
 /**
- *
+ * A text field component with the ability to add validators and validate its value.
  * @author ssoldatos
  */
 public class STextField extends JTextField implements FormComponentError, FormComponentValidator {
@@ -38,7 +38,7 @@ public class STextField extends JTextField implements FormComponentError, FormCo
   private ValidatorList validators = new ValidatorList();
 
   /**
-   * Called before every constructor to get the errorImage
+   * Called before every constructor to get the errorImage and set the size
    */
   {
     setPreferredSize(new Dimension(80, 20));
@@ -55,7 +55,8 @@ public class STextField extends JTextField implements FormComponentError, FormCo
    * Creates a default STextField
    */
   public STextField() {
-    this(new NullValidator(), "");
+    super();
+    addValidator(new NullValidator());
   }
 
   /**
@@ -63,7 +64,8 @@ public class STextField extends JTextField implements FormComponentError, FormCo
    * @param validator The validator to add
    */
   public STextField(SValidator validator) {
-    this(validator, "");
+    super();
+    addValidator(validator);
   }
 
   /**
@@ -71,7 +73,9 @@ public class STextField extends JTextField implements FormComponentError, FormCo
    * @param value The initial text
    */
   public STextField(String value) {
-    this(new NullValidator(), value);
+    super();
+    addValidator(new NullValidator());
+    setText(value);
   }
 
   /**
@@ -80,20 +84,11 @@ public class STextField extends JTextField implements FormComponentError, FormCo
    * @param value The value
    */
   public STextField(SValidator validator, String value) {
+    super();
     addValidator(validator);
     setText(value);
 
   }
-
-  /**
-   * Creates an STextField with a validator and setting if empty value is allowed
-   * @param validator The validator to add
-   * @param allowEmpty If empty value is allowed
-   */
-  public STextField(SValidator validator, boolean allowEmpty) {
-    this(validator, "");
-  }
-  
 
   @Override
   protected void paintComponent(Graphics g) {

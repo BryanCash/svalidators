@@ -25,23 +25,24 @@ import com.googlecode.svalidators.exceptions.AttributeException;
 import com.googlecode.svalidators.interfaces.FormComponentError;
 import com.googlecode.svalidators.interfaces.FormComponentValidator;
 import com.googlecode.svalidators.validators.NullValidator;
+import com.googlecode.svalidators.validators.RequiredValidator;
 import com.googlecode.svalidators.validators.SValidator;
 
 /**
- *
+ * A combo box component with the ability to add validators and validate its value.
  * @author ssoldatos
  */
 public class SComboBox extends JComboBox implements FormComponentError, FormComponentValidator {
 
   private static final long serialVersionUID = 346467346236435L;
-  private boolean allowEmpty = false;
+  private boolean allowEmpty = true;
   private boolean error;
   private Image errorImage;
   private String errorMessage;
   private ValidatorList validators = new ValidatorList();
 
   /**
-   * Called before every constructor to get the errorImage
+   * Called before every constructor to get the errorImage and set the components size
    */
   {
     URL url = FormComponentError.class.getResource(errorImageUrl);
@@ -58,7 +59,9 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
    * Creates a default SComboBox
    */
   public SComboBox() {
-    this(new NullValidator(), false);
+    super();
+    addValidator(new NullValidator());
+    setAllowEmpty(allowEmpty);
   }
 
   /**
@@ -66,9 +69,10 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
    * @param validator The validator to add to the component
    */
   public SComboBox(SValidator validator) {
-    this(validator, false);
+    super();
+    setAllowEmpty(allowEmpty);
+    addValidator(validator);
   }
-
  
   /**
    * Creates a SComboBox with a Validator and setting if empty value is allowed
@@ -77,11 +81,9 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
    */
   public SComboBox(SValidator validator, boolean allowEmpty) {
     super();
-    this.allowEmpty = allowEmpty;
+    setAllowEmpty(allowEmpty);
     addValidator(validator);
   }
-
- 
 
   @Override
   public void addError() {
@@ -154,7 +156,7 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
   @Override
   public boolean validateValue() {
     if (!isEditable()) {
-      if (allowEmpty || getSelectedIndex() > 0) {
+      if (isAllowEmpty() || getSelectedIndex() > 0) {
         clearError();
         return true;
       } else {
@@ -164,7 +166,7 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
       }
     }
     String val = String.valueOf(getEditor().getItem());
-    Collection<SValidator> c = validators.validators.values();
+    Collection<SValidator> c = getValidators().validators.values();
     Iterator<SValidator> it = c.iterator();
     this.errorMessage = "";
     clearError();
@@ -193,7 +195,7 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
   @Override
   public String getErrorMessage() {
     String er = "";
-    Collection<SValidator> c = validators.validators.values();
+    Collection<SValidator> c = getValidators().validators.values();
     Iterator<SValidator> it = c.iterator();
     while (it.hasNext()) {
       SValidator cValidator = it.next();
@@ -205,29 +207,61 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
 
   @Override
   public void addValidator(SValidator validator) {
-    validators.addValidator(validator);
+    getValidators().addValidator(validator);
     validateValue();
   }
 
   @Override
   public void removeValidator(String type) {
-    validators.removeValidator(type);
+    getValidators().removeValidator(type);
     validateValue();
   }
 
   @Override
   public void clearValidatorsList() {
-    validators.clearValidators();
+    getValidators().clearValidators();
     validateValue();
   }
 
   @Override
   public ValidatorList getValidatorsList() {
-    return validators;
+    return getValidators();
   }
 
   @Override
   public int getValidatorsListSize() {
-    return validators.getSize();
+    return getValidators().getSize();
+  }
+
+  /**
+   * @return the allowEmpty
+   */
+  public boolean isAllowEmpty() {
+    return allowEmpty;
+  }
+
+  /**
+   * @param allowEmpty the allowEmpty to set
+   */
+  public void setAllowEmpty(boolean allowEmpty) {
+    this.allowEmpty = allowEmpty;
+    if(!allowEmpty){
+      addValidator(new RequiredValidator());
+    }
+  }
+
+  /**
+   * @return the validators
+   */
+  public ValidatorList getValidators() {
+    return validators;
+  }
+
+  /**
+   * @param validators the validators to set
+   */
+  public void setValidators(ValidatorList validators) {
+    this.validators = validators;
+    validateValue();
   }
 }
