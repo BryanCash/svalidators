@@ -15,12 +15,20 @@ import com.googlecode.svalidators.exceptions.AttributeException;
  */
 public class FileValidator extends SValidator {
 
-  /** The file type **/
-  public static final int FILE = 0;
-  /** The directory type **/
-  public static final int DIR = 1;
-  /** The type of the file to validate (file or dir) **/
-  private int fileType = 0;
+  /** The type of the file to validate. Must be one of {@link Type} **/
+  private Type fileType = Type.FILE;
+
+  /**
+   * The fileType types :<br />
+   * {@link #FILE}<br />
+   * {@link #DIR}<br />
+   */
+  public enum Type {
+    /** The {@link #value} must be a file **/
+    FILE,
+    /** The {@link #value} must be a directory **/
+    DIR
+  };
 
   /**
    * Creates a default FileValidator
@@ -31,21 +39,22 @@ public class FileValidator extends SValidator {
   }
 
   /**
-   * Creates a FileValidator with a value and an attribute map
+   * Creates a FileValidator with {@link #value} , a type of {@link Type} and
+   * set {@link #allowEmpty}
    * @param value The value to validate
-   * @param fileType
+   * @param fileType  The file type. Must be one of {@link Type}
    * @param allowEmpty If empty value is allowed
    */
-  public FileValidator(String value, int fileType, boolean allowEmpty){
+  public FileValidator(String value, Type fileType, boolean allowEmpty) {
     super();
-    this.value = value;
-    this.allowEmpty = allowEmpty;
-    this.fileType = fileType;
+    setValue(value);
+    setAllowEmpty(allowEmpty);
+    setFileType(fileType);
     afterCreation();
   }
 
   @Override
-  public boolean validate(){
+  public boolean validate() {
     int empty = validateEmpty();
     if (empty == SValidator.EMPTY_ALLOWED) {
       return true;
@@ -53,12 +62,13 @@ public class FileValidator extends SValidator {
       return false;
     }
     File f = new File(value);
-    return ((fileType == FILE && f.isFile()) || (fileType == DIR && f.isDirectory()));
+    return ((fileType.equals(Type.FILE) && f.isFile()) ||
+        (fileType.equals(Type.DIR) && f.isDirectory()));
   }
 
   @Override
   protected void setErrorMessage() {
-    errorMessage = "The value must be a valid " + (fileType == FILE ? "file" : "directory");
+    errorMessage = "The value must be a valid " + (fileType.equals(Type.FILE) ? "file" : "directory");
   }
 
   @Override
@@ -67,22 +77,24 @@ public class FileValidator extends SValidator {
   }
 
   /**
+   * Gets the {@link #fileType}
    * @return the fileType
    */
-  public int getFileType() {
+  public Type getFileType() {
     return fileType;
   }
 
   /**
+   * Sets the {@link #fileType}
    * @param fileType the fileType to set
    * @throws AttributeException
    */
-  public void setFileType(int fileType) throws AttributeException {
-    if (fileType == FILE || fileType == DIR) {
+  public void setFileType(Type fileType) throws AttributeException {
+    if (fileType.equals(Type.FILE) || fileType.equals(Type.DIR)) {
       this.fileType = fileType;
       setErrorMessage();
     } else {
-      throw new AttributeException("The fileType must be " + FILE + " or " + DIR);
+      throw new AttributeException("The fileType must be " + Type.FILE + " or " + Type.DIR);
     }
   }
 }

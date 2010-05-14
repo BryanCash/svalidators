@@ -5,14 +5,13 @@
 package com.googlecode.svalidators.validators;
 
 /**
- * EmailValidator
  * Validates that a value is an email address
  * @author ssoldatos
  */
 public class EmailValidator extends RegularExpressionValidator {
 
   /** The emails regular expression **/
-  static final String EMAIL_REGEX = "\\b[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}\\b";
+  private final String EMAIL_REGEX = "\\b[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}\\b";
 
   /**
    * Creates a default EmailValidator
@@ -24,8 +23,8 @@ public class EmailValidator extends RegularExpressionValidator {
   }
 
   /**
-   * Create an EmailValidator with a value and set if it allows empty values
-   * @param value The value to validate or null
+   * Create an EmailValidator with a {@link #value} and set {@link #allowEmpty}
+   * @param value The value to validate
    * @param allowEmpty If empty value is allowed
    */
   public EmailValidator(String value, boolean allowEmpty) {
