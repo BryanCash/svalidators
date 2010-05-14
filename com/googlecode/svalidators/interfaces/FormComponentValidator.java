@@ -8,7 +8,7 @@ import com.googlecode.svalidators.formcomponents.ValidatorList;
 import com.googlecode.svalidators.validators.SValidator;
 
 /**
- *
+ * FormComponentsValidator interface
  * @author ssoldatos
  */
 public interface FormComponentValidator {
@@ -20,7 +20,7 @@ public interface FormComponentValidator {
   boolean validateValue();
 
   /**
-   * Adds a validator to the component *
+   * Adds a validator to the component 
    * @param validator The validator to add
    */
   void addValidator(SValidator validator);
