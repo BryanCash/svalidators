@@ -17,19 +17,20 @@ import com.googlecode.svalidators.exceptions.AttributeException;
 public class DateValidator extends SValidator {
 
   /** The date format to validate against **/
-  private String dateFormat;
+  private String dateFormat = "dd/MM/yyyy";
 
   /**
    * Creates a default DateValidator
    */
   public DateValidator() {
     super();
-    setDateFormat("dd/MM/yyyy");
+    setDateFormat(dateFormat);
     afterCreation();
   }
 
   /**
-   * Creates a DateValidator with a value and an attribute map
+   * Creates a DateValidator with {@link #value}, {@link #dateFormat} and set
+   * {@link #allowEmpty}
    * @param value The value to validate or null
    * @param dateFormat The dateFormat
    * @param allowEmpty If empty value is allowed
@@ -73,6 +74,7 @@ public class DateValidator extends SValidator {
   }
 
   /**
+   * Gets the validators {@link #dateFormat}
    * @return the dateFormat
    */
   public String getDateFormat() {
@@ -80,6 +82,7 @@ public class DateValidator extends SValidator {
   }
 
   /**
+   * Sets the validators {@link #dateFormat}
    * @param dateFormat the dateFormat to set
    * @throws AttributeException
    */

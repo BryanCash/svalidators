@@ -133,6 +133,7 @@ public class CompareValidator extends SValidator {
   }
 
   /**
+   * Gets the {@link #valueToCompareWith}
    * @return the valueToCompareWith
    */
   public String getValueToCompareWith() {
@@ -140,6 +141,7 @@ public class CompareValidator extends SValidator {
   }
 
   /**
+   * Sets the {@link #valueToCompareWith}
    * @param valueToCompareWith the valueToCompareWith to set
    */
   public void setValueToCompareWith(String valueToCompareWith) {
@@ -148,15 +150,15 @@ public class CompareValidator extends SValidator {
   }
 
   /**
+   * Gets the {@link #compareType}
    * @return the compareType
    */
   public Type getCompareType() {
     return compareType;
-
-
   }
 
   /**
+   * Sets the {@link #compareType}
    * @param compareType the compareType to set
    * @throws AttributeException
    */
