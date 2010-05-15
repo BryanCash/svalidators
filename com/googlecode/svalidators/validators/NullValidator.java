@@ -15,6 +15,7 @@ public class NullValidator extends SValidator {
    */
   public NullValidator() {
     super();
+    setAllowEmpty(true);
     afterCreation();
   }
 
