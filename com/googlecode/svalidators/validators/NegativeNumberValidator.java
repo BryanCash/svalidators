@@ -38,6 +38,12 @@ public class NegativeNumberValidator extends NumericValidator {
 
   @Override
   public boolean validate() {
+    int empty = validateEmpty();
+    if (empty == SValidator.EMPTY_ALLOWED) {
+      return true;
+    } else if (empty == SValidator.EMPTY_NOTALLOWED) {
+      return false;
+    }
     if(!super.validate()){
       return false;
     }
