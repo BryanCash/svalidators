@@ -61,8 +61,9 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
   public SComboBox() {
     super();
     addValidator(new NullValidator());
-    setAllowEmpty(allowEmpty);
   }
+
+
 
   /**
    * Creates a SComboBox with a Validator
