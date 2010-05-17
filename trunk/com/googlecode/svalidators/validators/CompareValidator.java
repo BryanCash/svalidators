@@ -118,12 +118,12 @@ public class CompareValidator extends SValidator {
 
   @Override
   protected void setErrorMessage() {
-    errorMessage = "The value must be  "
+    errorMessage = "The value must be"
         + (compareType.equals(Type.LESS) ? " less than "
-        : compareType.equals(Type.EQUALS) ? " equals to "
+        : compareType.equals(Type.EQUALS) ? " equal to "
         : compareType.equals(Type.GREATER) ? " greater than "
-        : compareType.equals(Type.LESS_OR_EQUALS) ? " less than or equals to "
-        : compareType.equals(Type.GREATER_OR_EQUALS) ? " greater than or equals to " : "")
+        : compareType.equals(Type.LESS_OR_EQUALS) ? " less than or equal to "
+        : compareType.equals(Type.GREATER_OR_EQUALS) ? " greater than or equal to " : "")
         + "<b>'" + getValueToCompareWith() + "'</b>";
   }
 

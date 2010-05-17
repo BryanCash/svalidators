@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import com.googlecode.svalidators.exceptions.ComponentException;
+import java.util.Iterator;
 
 /**
  * A ValidationGroup consists of a list of components to be validated
@@ -20,6 +21,10 @@ public class ValidationGroup {
    */
   ArrayList<JComponent> components = new ArrayList<JComponent>();
 
+  /** If the group contails error */
+  boolean hasError = false;
+  /** The error messages */
+  ArrayList<String> errorMessage = new ArrayList<String>();
   /**
    * Creates an empty ValidationGroup
    */
@@ -79,27 +84,43 @@ public class ValidationGroup {
    * @return true if validation succeeds else false
    */
   public boolean validate() {
+    clearErrors();
     for (JComponent jComponent : components) {
       if (jComponent instanceof SComboBox) {
         SComboBox combo = (SComboBox) jComponent;
         if (!combo.validateValue()) {
-          return false;
+          hasError = true;
+          errorMessage.add(combo.getName()+"\n"+combo.getErrorMessage()+"\n");
         }
       } else if (jComponent instanceof STextField) {
         STextField textfield = (STextField) jComponent;
         if (!textfield.validateValue()) {
-          return false;
+          hasError = true;
+          errorMessage.add(textfield.getName()+"\n"+textfield.getErrorMessage()+"\n");
         }
       }
     }
-    return true;
+    return !hasError;
   }
 
   /**
    * Displays a message when validation fails
+   * @param verbose Display a verbose message or not
    */
-  public void errorMessage() {
-    JOptionPane.showMessageDialog(null, "The form validation failed.\nCheck the errors displayed in the form.", "Validation failed", JOptionPane.ERROR_MESSAGE);
+  public void errorMessage(boolean verbose) {
+    if(!verbose){
+      JOptionPane.showMessageDialog(null, "The form validation failed.\nCheck the errors displayed in the form.", "Validation failed", JOptionPane.ERROR_MESSAGE);
+    } else {
+      String error = createErrorMessage(errorMessage);
+      JOptionPane.showMessageDialog(null, "The form validation failed.Check the following errors:\n"+error, "Validation failed", JOptionPane.ERROR_MESSAGE);
+    }
+  }
+  
+  /**
+   * Display a single message when validation fails
+   */
+  public void errorMessage(){
+    errorMessage(false);
   }
 
   /**
@@ -107,5 +128,22 @@ public class ValidationGroup {
    */
   public void successMessage() {
     JOptionPane.showMessageDialog(null, "Validation succeeded", "Success", JOptionPane.INFORMATION_MESSAGE);
+  }
+
+  private void clearErrors() {
+    hasError = false;
+    errorMessage = new ArrayList<String>();
+  }
+
+  private String createErrorMessage(ArrayList<String> errorMessage) {
+    String mess = "";
+
+    for (Iterator<String> it = errorMessage.iterator(); it.hasNext();) {
+      String message = it.next();
+      message = message.replaceAll("(<b>)|(</b>)", "");
+      message = message.replaceAll("(<br />)", "\n");
+      mess += message;
+    }
+    return mess;
   }
 }
