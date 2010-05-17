@@ -181,7 +181,7 @@ public class STextField extends JTextField implements FormComponentError, FormCo
   @Override
   public void addValidator(SValidator validator) {
     this.validators.addValidator(validator);
-    if(!validator.isAllowEmpty()){
+    if (!validator.isAllowEmpty()) {
       this.validators.addValidator(new RequiredValidator());
     }
     validateValue();
@@ -195,7 +195,9 @@ public class STextField extends JTextField implements FormComponentError, FormCo
     while (it.hasNext()) {
       SValidator cValidator = it.next();
       cValidator.setValue(getText().trim());
-      er += " - " + cValidator.getErrorMessage() + "<br />";
+      if (!cValidator.validate()) {
+        er += " - " + cValidator.getErrorMessage() + "<br />";
+      }
     }
     return er;
   }
@@ -217,8 +219,8 @@ public class STextField extends JTextField implements FormComponentError, FormCo
     return validators.getSize();
   }
 
-  public SValidator getValidator(String type){
-   return validators.getValidator(type);
+  public SValidator getValidator(String type) {
+    return validators.getValidator(type);
   }
 }
 
