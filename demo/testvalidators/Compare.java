@@ -25,7 +25,7 @@ public class Compare extends javax.swing.JPanel {
     initComponents();
     //EQUALS
     tf_equals_2.addValidator(new NullValidator());
-    CompareValidator compareEq = new CompareValidator("", tf_equals_2.getText().trim(), Type.EQUALS, true);
+    CompareValidator compareEq = new CompareValidator("", tf_equals_2.getText().trim(), Type.EQUALS, false);
     tf_equals_1.addValidator(compareEq);
     //LESS
     tf_lesser_2.addValidator(new NullValidator());
@@ -76,6 +76,7 @@ public class Compare extends javax.swing.JPanel {
     jLabel1.setText("Equals");
 
     tf_equals_1.setMinimumSize(new java.awt.Dimension(2, 20));
+    tf_equals_1.setName("equals"); // NOI18N
     tf_equals_1.setPreferredSize(new java.awt.Dimension(2, 20));
     tf_equals_1.addFocusListener(new java.awt.event.FocusAdapter() {
       public void focusLost(java.awt.event.FocusEvent evt) {
@@ -95,6 +96,7 @@ public class Compare extends javax.swing.JPanel {
       }
     });
 
+    tf_lesser_1.setName("less than"); // NOI18N
     tf_lesser_1.setPreferredSize(new java.awt.Dimension(2, 20));
     tf_lesser_1.addKeyListener(new java.awt.event.KeyAdapter() {
       public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -119,6 +121,7 @@ public class Compare extends javax.swing.JPanel {
       }
     });
 
+    tf_greater_1.setName("greater than"); // NOI18N
     tf_greater_1.setPreferredSize(new java.awt.Dimension(2, 20));
     tf_greater_1.addKeyListener(new java.awt.event.KeyAdapter() {
       public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -142,6 +145,7 @@ public class Compare extends javax.swing.JPanel {
     jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     jLabel5.setText("greater or equals");
 
+    tf_leq_1.setName("less or equal"); // NOI18N
     tf_leq_1.setPreferredSize(new java.awt.Dimension(2, 20));
     tf_leq_1.addKeyListener(new java.awt.event.KeyAdapter() {
       public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -156,6 +160,7 @@ public class Compare extends javax.swing.JPanel {
       }
     });
 
+    tf_geq_1.setName("greater or equals"); // NOI18N
     tf_geq_1.addKeyListener(new java.awt.event.KeyAdapter() {
       public void keyReleased(java.awt.event.KeyEvent evt) {
         tf_geq_1KeyReleased(evt);
@@ -303,7 +308,7 @@ public class Compare extends javax.swing.JPanel {
       compareGroup.addComponent(tf_geq_1);
       compareGroup.addComponent(tf_geq_2);
       if (!compareGroup.validate()) {
-        compareGroup.errorMessage();
+        compareGroup.errorMessage(true);
       } else {
         compareGroup.successMessage();
       }
