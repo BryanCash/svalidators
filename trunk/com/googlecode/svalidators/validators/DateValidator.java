@@ -65,7 +65,7 @@ public class DateValidator extends SValidator {
 
   @Override
   protected void setErrorMessage() {
-    errorMessage = "The value must be valid date";
+    errorMessage = "The value must be valid date with date format: " + dateFormat;
   }
 
   @Override
