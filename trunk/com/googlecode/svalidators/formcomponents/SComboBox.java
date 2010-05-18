@@ -63,8 +63,6 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
     addValidator(new NullValidator());
   }
 
-
-
   /**
    * Creates a SComboBox with a Validator
    * @param validator The validator to add to the component
@@ -74,7 +72,7 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
     setAllowEmpty(allowEmpty);
     addValidator(validator);
   }
- 
+
   /**
    * Creates a SComboBox with a Validator and setting if empty value is allowed
    * @param validator The validator to add to the component
@@ -201,7 +199,9 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
     while (it.hasNext()) {
       SValidator cValidator = it.next();
       cValidator.setValue(getSelectedItem().toString().trim());
-      er += " - " + cValidator.getErrorMessage() + "<br />";
+      if (!cValidator.validate() && !cValidator.getErrorMessage().equals("")) {
+        er += " - " + cValidator.getErrorMessage() + "<br />";
+      }
     }
     return er;
   }
@@ -246,7 +246,7 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
    */
   public void setAllowEmpty(boolean allowEmpty) {
     this.allowEmpty = allowEmpty;
-    if(!allowEmpty){
+    if (!allowEmpty) {
       addValidator(new RequiredValidator());
     }
   }

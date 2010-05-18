@@ -195,7 +195,7 @@ public class STextField extends JTextField implements FormComponentError, FormCo
     while (it.hasNext()) {
       SValidator cValidator = it.next();
       cValidator.setValue(getText().trim());
-      if (!cValidator.getErrorMessage().equals("")) {
+      if (!cValidator.validate() && !cValidator.getErrorMessage().equals("")) {
         er += " - " + cValidator.getErrorMessage() + "<br />";
       }
     }
