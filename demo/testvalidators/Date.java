@@ -63,13 +63,20 @@ public class Date extends javax.swing.JPanel {
 
     sTextField4.setText("sTextField4");
 
+    tf_date_1.setName("date 1"); // NOI18N
+
     label_1.setText("dd/MM/yyyy");
 
+    tf_date_2.setName("date 2"); // NOI18N
+
+    tf_date_3.setName("date 3"); // NOI18N
     tf_date_3.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         tf_date_3ActionPerformed(evt);
       }
     });
+
+    tf_date_4.setName("date 4"); // NOI18N
 
     label_2.setText("d/M/yy");
 
@@ -142,7 +149,7 @@ public class Date extends javax.swing.JPanel {
      group.addComponent(tf_date_3);
      group.addComponent(tf_date_4);
      if(!group.validate()){
-       group.errorMessage();
+       group.errorMessage(true);
      } else {
        group.successMessage();
      }

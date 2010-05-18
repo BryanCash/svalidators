@@ -79,6 +79,9 @@
   </Layout>
   <SubComponents>
     <Component class="com.googlecode.svalidators.formcomponents.STextField" name="tf_date_1">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="date 1" noResource="true"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="label_1">
       <Properties>
@@ -86,13 +89,22 @@
       </Properties>
     </Component>
     <Component class="com.googlecode.svalidators.formcomponents.STextField" name="tf_date_2">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="date 2" noResource="true"/>
+      </Properties>
     </Component>
     <Component class="com.googlecode.svalidators.formcomponents.STextField" name="tf_date_3">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="date 3" noResource="true"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_date_3ActionPerformed"/>
       </Events>
     </Component>
     <Component class="com.googlecode.svalidators.formcomponents.STextField" name="tf_date_4">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="date 4" noResource="true"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="label_2">
       <Properties>
