@@ -13,7 +13,6 @@ import com.googlecode.svalidators.exceptions.AttributeException;
  * @author ssoldatos
  */
 public abstract class SValidator {
-
   /**
    * ATTRIBUTES
    */
@@ -46,6 +45,7 @@ public abstract class SValidator {
   public static final String REGEX = "regex";
   public static final String REQUIRED = "required";
   public static final String URL = "url";
+  public static final String FILEPATH = "filepath";
 
   /**
    * ABSTRACT METHODS
