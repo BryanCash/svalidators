@@ -23,6 +23,8 @@ public class testValidators extends javax.swing.JFrame {
     tabbedPane.add("Compare",new Compare());
     tabbedPane.add("Date",new Date());
     tabbedPane.add("Regex",new Regex());
+    tabbedPane.add("File",new File());
+    tabbedPane.add("Numbers",new Number());
 
   }
 
