@@ -59,7 +59,8 @@ public class ListValidator extends SValidator {
 
   @Override
   protected void setErrorMessage() {
-    errorMessage = "The value must be in the predefined list";
+
+    errorMessage = "The value must be in the predefined list :<br />"+list.toString();
   }
 
   @Override
