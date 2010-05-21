@@ -6,10 +6,6 @@ package com.googlecode.svalidators.validators;
 
 /**
  * Creates a default LengthValidator<br />
- * If {@link #min} is provided the validator checks if the value has a length at least min<br />
- * If {@link #max} is provided the validator checks if the value has a length not greater than max<br />
- * If {@link #min} & {@link #max} are provided the validator checks if the value has a length between min and max<br />
- * If {@link #length} is provided the validator checks if the value has a length exactly the same<br />
  * @author ssoldatos
  */
 public class LengthValidator extends SValidator {
@@ -34,11 +30,11 @@ public class LengthValidator extends SValidator {
    * {@link #max}, {@link #length}
    * @param value The value to validate
    * @param length The valid length. If 0 is ignored
-   * @param max The maximum valid length. If 0 is ignored
    * @param min The minimum valid length. If 0 is ignored
+   * @param max The maximum valid length. If 0 is ignored
    * @param allowEmpty If empty value is allowed
    */
-  public LengthValidator(String value, int length, int max, int min, boolean allowEmpty) {
+  public LengthValidator(String value, int length, int min, int max, boolean allowEmpty) {
     super();
     this.value = value;
     this.length = length;
@@ -80,10 +76,14 @@ public class LengthValidator extends SValidator {
 
   @Override
   protected void setErrorMessage() {
-    if (getLength() == 0) {
-      errorMessage = "The value must have a length between " + getMin() + " and " + getMax();
-    } else {
+    if (getLength() > 0) {
       errorMessage = "The value must have a length of " + getLength();
+    } else if (getMin() > 0 && getMax() > 0) {
+      errorMessage = "The value must have a length between or equal to " + getMin() + " and " + getMax();
+    } else if(getMin() > 0){
+      errorMessage = "The value must have a length greater than or ewual to " + getMin();
+    } else if(getMax() > 0){
+      errorMessage = "The value must have a length shorter than or equal to " + getMax();
     }
   }
 
