@@ -41,9 +41,14 @@ public class IntegerValidator extends NumericValidator {
     if (!super.validate()) {
       return false;
     }
-    if (Double.parseDouble(value) == Long.parseLong(value)) {
-      return true;
-    } else {
+    try {
+      double dValue = Double.parseDouble(value);
+      if (Math.floor(dValue) == dValue) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (NumberFormatException ex) {
       return false;
     }
   }
