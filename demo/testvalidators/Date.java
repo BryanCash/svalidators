@@ -63,6 +63,8 @@ public class Date extends javax.swing.JPanel {
 
     sTextField4.setText("sTextField4");
 
+    setBackground(new java.awt.Color(255, 255, 255));
+
     tf_date_1.setName("date 1"); // NOI18N
 
     label_1.setText("dd/MM/yyyy");

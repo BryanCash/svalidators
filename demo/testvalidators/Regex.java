@@ -51,6 +51,8 @@ public class Regex extends javax.swing.JPanel {
     tf_url = new com.googlecode.svalidators.formcomponents.STextField();
     jButton1 = new javax.swing.JButton();
 
+    setBackground(new java.awt.Color(255, 255, 255));
+
     jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
     jLabel1.setText("Include regex :");
 

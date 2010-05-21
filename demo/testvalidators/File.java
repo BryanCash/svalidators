@@ -46,6 +46,8 @@ public class File extends javax.swing.JPanel {
     tf_cr_file = new com.googlecode.svalidators.formcomponents.STextField();
     button = new javax.swing.JButton();
 
+    setBackground(new java.awt.Color(255, 255, 255));
+
     jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
     jLabel1.setText("Existing File :");
 
