@@ -46,6 +46,7 @@ public abstract class SValidator {
   public static final String REQUIRED = "required";
   public static final String URL = "url";
   public static final String FILEPATH = "filepath";
+  public static final String EXCLUDE = "exclude";
 
   /**
    * ABSTRACT METHODS
