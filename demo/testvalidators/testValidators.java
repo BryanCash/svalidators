@@ -72,7 +72,7 @@ public class testValidators extends javax.swing.JFrame {
         .addContainerGap()
         .addComponent(jLabel3)
         .addGap(34, 34, 34)
-        .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+        .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
         .addContainerGap())
     );
 
