@@ -5,6 +5,8 @@
 
 package com.googlecode.svalidators.validators;
 
+import java.util.StringTokenizer;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -46,11 +48,14 @@ public class ExcludeValidator extends SValidator{
     } else if (empty == SValidator.EMPTY_NOTALLOWED) {
       return false;
     }
-     if(new RegularExpressionValidator(value, excludeChars, false, allowEmpty).validate()){
-       return false;
-     } else {
-       return true;
-     }
+    char[] chars = excludeChars.toCharArray();
+    for (int i = 0; i < chars.length; i++) {
+      char c = chars[i];
+      if(value.indexOf(c) > -1){
+        return false;
+      }
+    }
+    return true;
   }
 
   @Override
@@ -74,7 +79,8 @@ public class ExcludeValidator extends SValidator{
    * @param excludeChars the excludeChars to set
    */
   public void setExcludeChars(String excludeChars) {
-    this.excludeChars = Pattern.quote(excludeChars);
+    //Matcher match = GRAB_SP_CHARS.matcher(excludeChars);
+    this.excludeChars =  excludeChars;
   }
 
 }
