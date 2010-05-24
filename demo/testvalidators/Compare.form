@@ -42,20 +42,22 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tf_equals_1" alignment="0" min="-2" pref="126" max="-2" attributes="1"/>
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="tf_geq_1" min="-2" pref="126" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="tf_lesser_1" alignment="0" min="-2" pref="126" max="-2" attributes="1"/>
-                                      <Component id="tf_greater_1" alignment="0" min="-2" pref="126" max="-2" attributes="1"/>
-                                      <Component id="tf_leq_1" alignment="0" min="-2" pref="126" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="button_compare" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="359" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="tf_neq_1" alignment="0" max="32767" attributes="1"/>
+                              <Component id="tf_equals_1" alignment="0" pref="126" max="32767" attributes="1"/>
+                              <Component id="tf_geq_1" alignment="0" pref="126" max="32767" attributes="1"/>
+                              <Component id="tf_lesser_1" alignment="0" pref="126" max="32767" attributes="1"/>
+                              <Component id="tf_greater_1" alignment="0" pref="126" max="32767" attributes="1"/>
+                              <Component id="tf_leq_1" alignment="0" pref="126" max="32767" attributes="1"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel6" pref="138" max="32767" attributes="0"/>
                               <Component id="jLabel5" alignment="0" pref="138" max="32767" attributes="1"/>
                               <Component id="jLabel3" alignment="0" pref="138" max="32767" attributes="1"/>
                               <Component id="jLabel4" alignment="0" pref="138" max="32767" attributes="1"/>
@@ -63,18 +65,15 @@
                               <Component id="jLabel1" alignment="0" pref="138" max="32767" attributes="1"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tf_lesser_2" min="-2" pref="124" max="-2" attributes="1"/>
-                              <Component id="tf_equals_2" alignment="0" min="-2" pref="124" max="-2" attributes="1"/>
-                              <Component id="tf_greater_2" min="-2" pref="124" max="-2" attributes="1"/>
-                              <Component id="tf_leq_2" min="-2" pref="124" max="-2" attributes="1"/>
-                              <Component id="tf_geq_2" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="tf_lesser_2" alignment="0" pref="124" max="32767" attributes="1"/>
+                              <Component id="tf_equals_2" alignment="0" pref="124" max="32767" attributes="1"/>
+                              <Component id="tf_greater_2" alignment="0" pref="124" max="32767" attributes="1"/>
+                              <Component id="tf_leq_2" alignment="0" pref="124" max="32767" attributes="1"/>
+                              <Component id="tf_geq_2" alignment="0" pref="124" max="32767" attributes="1"/>
+                              <Component id="tf_neq_2" alignment="0" max="32767" attributes="1"/>
                           </Group>
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="button_compare" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="359" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -135,9 +134,17 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="tf_neq_1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tf_neq_2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="23" max="32767" attributes="0"/>
                   <Component id="button_compare" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="22" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -245,13 +252,13 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="less or equals"/>
+            <Property name="text" type="java.lang.String" value="less or equal"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="greater or equals"/>
+            <Property name="text" type="java.lang.String" value="greater or equal"/>
           </Properties>
         </Component>
         <Component class="com.googlecode.svalidators.formcomponents.STextField" name="tf_leq_1">
@@ -286,6 +293,25 @@
         <Component class="com.googlecode.svalidators.formcomponents.STextField" name="tf_geq_2">
           <Events>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_geq_2KeyReleased"/>
+          </Events>
+        </Component>
+        <Component class="com.googlecode.svalidators.formcomponents.STextField" name="tf_neq_1">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="Not equal" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_neq_1KeyReleased"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel6">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="not equal"/>
+          </Properties>
+        </Component>
+        <Component class="com.googlecode.svalidators.formcomponents.STextField" name="tf_neq_2">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_neq_2KeyReleased"/>
           </Events>
         </Component>
       </SubComponents>
