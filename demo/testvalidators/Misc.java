@@ -12,6 +12,7 @@
 package testvalidators;
 
 import com.googlecode.svalidators.formcomponents.ValidationGroup;
+import com.googlecode.svalidators.validators.ExcludeValidator;
 import com.googlecode.svalidators.validators.ListValidator;
 import com.googlecode.svalidators.validators.NoSpaceValidator;
 import com.googlecode.svalidators.validators.NullValidator;
@@ -38,6 +39,7 @@ public class Misc extends javax.swing.JPanel {
         tf_nospace.addValidator(new NoSpaceValidator("", false));
         tf_null.addValidator(new NullValidator());
         tf_required.addValidator(new RequiredValidator());
+        tf_exclude.addValidator(new ExcludeValidator("", label_esclude.getText(), false));
     }
 
     /** This method is called from within the constructor to
@@ -60,6 +62,9 @@ public class Misc extends javax.swing.JPanel {
     jButton1 = new javax.swing.JButton();
     jLabel5 = new javax.swing.JLabel();
     cb_list = new javax.swing.JComboBox();
+    jLabel6 = new javax.swing.JLabel();
+    tf_exclude = new com.googlecode.svalidators.formcomponents.STextField();
+    label_esclude = new javax.swing.JLabel();
 
     setBackground(new java.awt.Color(255, 255, 255));
 
@@ -92,6 +97,11 @@ public class Misc extends javax.swing.JPanel {
 
     jLabel5.setText("In list:");
 
+    jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+    jLabel6.setText("Exclude :");
+
+    label_esclude.setText("./^&*<>\"'");
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
     this.setLayout(layout);
     layout.setHorizontalGroup(
@@ -104,17 +114,24 @@ public class Misc extends javax.swing.JPanel {
               .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
               .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
               .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-              .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
+              .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+              .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+              .addComponent(tf_exclude, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
               .addComponent(tf_list, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
               .addComponent(tf_nospace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
               .addComponent(tf_null, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
               .addComponent(tf_required, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(jLabel5)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(cb_list, 0, 111, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cb_list, 0, 111, Short.MAX_VALUE))
+              .addComponent(label_esclude, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)))
           .addComponent(jButton1))
         .addContainerGap())
     );
@@ -139,9 +156,14 @@ public class Misc extends javax.swing.JPanel {
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel4)
           .addComponent(tf_required, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(jLabel6)
+          .addComponent(tf_exclude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(label_esclude, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
         .addComponent(jButton1)
-        .addContainerGap(20, Short.MAX_VALUE))
+        .addGap(21, 21, 21))
     );
   }// </editor-fold>//GEN-END:initComponents
 
@@ -151,6 +173,7 @@ public class Misc extends javax.swing.JPanel {
       group.addComponent(tf_nospace);
       group.addComponent(tf_null);
       group.addComponent(tf_required);
+      group.addComponent(tf_exclude);
       if(!group.validate()){
         group.errorMessage(true);
       }
@@ -165,6 +188,9 @@ public class Misc extends javax.swing.JPanel {
   private javax.swing.JLabel jLabel3;
   private javax.swing.JLabel jLabel4;
   private javax.swing.JLabel jLabel5;
+  private javax.swing.JLabel jLabel6;
+  private javax.swing.JLabel label_esclude;
+  private com.googlecode.svalidators.formcomponents.STextField tf_exclude;
   private com.googlecode.svalidators.formcomponents.STextField tf_list;
   private com.googlecode.svalidators.formcomponents.STextField tf_nospace;
   private com.googlecode.svalidators.formcomponents.STextField tf_null;
