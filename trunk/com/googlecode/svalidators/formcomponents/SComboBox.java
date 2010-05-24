@@ -40,6 +40,7 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
   private Image errorImage;
   private String errorMessage;
   private ValidatorList validators = new ValidatorList();
+  private boolean trimValue = true;
 
   /**
    * Called before every constructor to get the errorImage and set the components size
@@ -198,7 +199,7 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
     Iterator<SValidator> it = c.iterator();
     while (it.hasNext()) {
       SValidator cValidator = it.next();
-      cValidator.setValue(getSelectedItem().toString().trim());
+      cValidator.setValue(trimValue ? getSelectedItem().toString().trim() : getSelectedItem().toString());
       if (!cValidator.validate() && !cValidator.getErrorMessage().equals("")) {
         er += " - " + cValidator.getErrorMessage() + "<br />";
       }
@@ -268,5 +269,19 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
 
   public SValidator getValidator(String type) {
     return validators.getValidator(type);
+  }
+
+  /**
+   * @return the trimValue
+   */
+  public boolean isTrimValue() {
+    return trimValue;
+  }
+
+  /**
+   * @param trimValue the trimValue to set
+   */
+  public void setTrimValue(boolean trimValue) {
+    this.trimValue = trimValue;
   }
 }
