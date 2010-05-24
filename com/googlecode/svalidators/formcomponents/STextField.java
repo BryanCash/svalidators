@@ -36,6 +36,7 @@ public class STextField extends JTextField implements FormComponentError, FormCo
   private boolean error;
   private String errorMessage;
   private ValidatorList validators = new ValidatorList();
+  private boolean trimValue = true;
 
   /**
    * Called before every constructor to get the errorImage and set the size
@@ -147,7 +148,7 @@ public class STextField extends JTextField implements FormComponentError, FormCo
     clearError();
     while (it.hasNext()) {
       SValidator cValidator = it.next();
-      cValidator.setValue(getText().trim());
+      cValidator.setValue(trimValue ? getText().trim() : getText());
       try {
         if (!cValidator.validate()) {
           error = true;
@@ -194,7 +195,7 @@ public class STextField extends JTextField implements FormComponentError, FormCo
     Iterator<SValidator> it = c.iterator();
     while (it.hasNext()) {
       SValidator cValidator = it.next();
-      cValidator.setValue(getText().trim());
+      cValidator.setValue(trimValue ? getText().trim() : getText());
       if (!cValidator.validate() && !cValidator.getErrorMessage().equals("")) {
         er += " - " + cValidator.getErrorMessage() + "<br />";
       }
@@ -221,6 +222,20 @@ public class STextField extends JTextField implements FormComponentError, FormCo
 
   public SValidator getValidator(String type) {
     return validators.getValidator(type);
+  }
+
+  /**
+   * @return the trimValue
+   */
+  public boolean isTrimValue() {
+    return trimValue;
+  }
+
+  /**
+   * @param trimValue the trimValue to set
+   */
+  public void setTrimValue(boolean trimValue) {
+    this.trimValue = trimValue;
   }
 }
 
