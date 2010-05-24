@@ -5,10 +5,6 @@
 
 package com.googlecode.svalidators.validators;
 
-import java.util.StringTokenizer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 /**
  * Creates a validator that doesn't allow certain chars in the value
  * @author ssoldatos
@@ -29,7 +25,7 @@ public class ExcludeValidator extends SValidator{
    * Creates a ExcludeValidator with a {@link #value}, {@link #excludeChars}
    * and sets {@link #allowEmpty}
    * @param value The value to validate
-   * @param excludeChars The invalid chars
+   * @param excludeChars A string of the invalid chars
    * @param allowEmpty If empty value is allowed
    */
   public ExcludeValidator(String value, String excludeChars, boolean allowEmpty) {
@@ -79,7 +75,6 @@ public class ExcludeValidator extends SValidator{
    * @param excludeChars the excludeChars to set
    */
   public void setExcludeChars(String excludeChars) {
-    //Matcher match = GRAB_SP_CHARS.matcher(excludeChars);
     this.excludeChars =  excludeChars;
   }
 
