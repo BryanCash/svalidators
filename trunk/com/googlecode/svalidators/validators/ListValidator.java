@@ -7,6 +7,7 @@ package com.googlecode.svalidators.validators;
 import java.util.ArrayList;
 import java.util.Collection;
 import com.googlecode.svalidators.exceptions.AttributeException;
+import java.util.Arrays;
 
 /**
  * ListValidator
@@ -27,7 +28,7 @@ public class ListValidator extends SValidator {
   }
 
   /**
-   * Creates a ListValidator with a {@link #value} the {@link #list} and set
+   * Creates a ListValidator with a {@link #value} the {@link #list} as collection and set
    * {@link #allowEmpty}
    * @param value The value to validate
    * @param list The list of valid values
@@ -39,6 +40,17 @@ public class ListValidator extends SValidator {
     this.list = list;
     this.allowEmpty = allowEmpty;
     afterCreation();
+  }
+
+  /**
+   * Creates a ListValidator with a {@link #value} the {@link #list} as array and set
+   * {@link #allowEmpty}
+   * @param value The value to validate
+   * @param list The array of valid values
+   * @param allowEmpty If empty value is allowed
+   */
+  public ListValidator(String value, Object[] list, boolean allowEmpty) {
+    this(value, Arrays.asList(list), allowEmpty);
   }
 
   @Override
