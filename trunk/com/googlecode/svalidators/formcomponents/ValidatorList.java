@@ -62,6 +62,10 @@ public class ValidatorList {
   * @return The validator
   */
   public SValidator getValidator(String type) {
-    return validators.get(type);
+    if(validators.containsKey(type)){
+      return validators.get(type);
+    } else {
+      return null;
+    }
   }
 }

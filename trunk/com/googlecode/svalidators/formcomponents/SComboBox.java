@@ -46,8 +46,9 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
    * Called before every constructor to get the errorImage and set the components size
    */
   {
+    validators = new ValidatorList();
     URL url = FormComponentError.class.getResource(errorImageUrl);
-    setPreferredSize(new Dimension(100, 26));
+    setPreferredSize(new Dimension(120, 26));
     try {
       Image errorIm = ImageIO.read(url);
       errorImage = errorIm.getScaledInstance(errorIm.getWidth(this), getHeight() - 2, Image.SCALE_SMOOTH);
@@ -70,7 +71,6 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
    */
   public SComboBox(SValidator validator) {
     super();
-    setAllowEmpty(allowEmpty);
     addValidator(validator);
   }
 
@@ -150,26 +150,27 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
   @Override
   public void setModel(ComboBoxModel aModel) {
     super.setModel(aModel);
-    validateValue();
+    if (validators != null) {
+      validateValue();
+    }
   }
 
   @Override
   public boolean validateValue() {
     Object val = null;
     if (!isEditable()) {
-      if (isAllowEmpty() || getSelectedIndex() > 0) {
-       // clearError();
-       // return true;
-      } else {
+      if (isAllowEmpty() || getSelectedIndex() > 0 || getValidator(SValidator.REQUIRED) == null) {
+       } else {
+        error = true;
         addError();
         this.errorMessage = " - Default value is not valid";
         return false;
       }
-      val = getSelectedItem() != null ? getSelectedItem().toString(): "";
+      val = getSelectedItem() != null ? getSelectedItem().toString() : "";
     } else {
       val = getEditor().getItem();
     }
-    
+
     Collection<SValidator> c = getValidators().validators.values();
     Iterator<SValidator> it = c.iterator();
     this.errorMessage = "";
@@ -203,7 +204,11 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
     Iterator<SValidator> it = c.iterator();
     while (it.hasNext()) {
       SValidator cValidator = it.next();
-      cValidator.setValue(trimValue ? getSelectedItem().toString().trim() : getSelectedItem().toString());
+      if(!isEditable && cValidator.getType().equals(SValidator.REQUIRED) && getSelectedIndex()==0){
+        cValidator.setValue("");
+      } else {
+        cValidator.setValue(trimValue ? getSelectedItem().toString().trim() : getSelectedItem().toString());
+      }
       if (!cValidator.validate() && !cValidator.getErrorMessage().equals("")) {
         er += " - " + cValidator.getErrorMessage() + "<br />";
       }
@@ -272,7 +277,11 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
   }
 
   public SValidator getValidator(String type) {
-    return validators.getValidator(type);
+    if (validators.getSize() > 0) {
+      return validators.getValidator(type);
+    } else {
+      return null;
+    }
   }
 
   /**
