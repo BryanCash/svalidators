@@ -27,6 +27,7 @@ public class testValidators extends javax.swing.JFrame {
     tabbedPane.add("Numbers",new Number());
     tabbedPane.add("Length",new Length());
     tabbedPane.add("Misc",new Misc());
+    tabbedPane.add("Combos",new Combo());
   }
 
  
