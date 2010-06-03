@@ -155,6 +155,7 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
 
   @Override
   public boolean validateValue() {
+    Object val = null;
     if (!isEditable()) {
       if (isAllowEmpty() || getSelectedIndex() > 0) {
        // clearError();
@@ -164,15 +165,18 @@ public class SComboBox extends JComboBox implements FormComponentError, FormComp
         this.errorMessage = " - Default value is not valid";
         return false;
       }
+      val = getSelectedItem() != null ? getSelectedItem().toString(): "";
+    } else {
+      val = getEditor().getItem();
     }
-    String val = getSelectedItem() != null ? getSelectedItem().toString(): "";
+    
     Collection<SValidator> c = getValidators().validators.values();
     Iterator<SValidator> it = c.iterator();
     this.errorMessage = "";
     clearError();
     while (it.hasNext()) {
       SValidator cValidator = it.next();
-      cValidator.setValue(val);
+      cValidator.setValue(val.toString());
       try {
         if (!cValidator.validate()) {
           error = true;
