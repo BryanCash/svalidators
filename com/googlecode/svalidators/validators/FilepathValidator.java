@@ -69,7 +69,7 @@ public class FilepathValidator extends SValidator {
 
   @Override
   protected void setErrorMessage() {
-    errorMessage = "The value must be a valid email";
+    errorMessage = "The value must be a valid file path";
   }
 
   @Override
