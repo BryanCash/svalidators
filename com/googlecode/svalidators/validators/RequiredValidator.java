@@ -37,7 +37,7 @@ public class RequiredValidator extends SValidator {
 
  
   @Override
-  protected void setErrorMessage() {
+  public void setErrorMessage() {
     errorMessage = "Empty value is not allowed";
   }
 

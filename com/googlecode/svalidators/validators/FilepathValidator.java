@@ -68,7 +68,7 @@ public class FilepathValidator extends SValidator {
   }
 
   @Override
-  protected void setErrorMessage() {
+  public void setErrorMessage() {
     errorMessage = "The value must be a valid file path";
   }
 

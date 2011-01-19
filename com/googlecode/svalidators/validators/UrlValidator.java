@@ -42,7 +42,7 @@ public class UrlValidator extends RegularExpressionValidator {
   }
 
   @Override
-  protected void setErrorMessage() {
+  public void setErrorMessage() {
     errorMessage = "Value must be a valid url";
   }
 
