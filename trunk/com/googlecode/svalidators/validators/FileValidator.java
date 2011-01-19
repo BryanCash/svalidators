@@ -67,7 +67,7 @@ public class FileValidator extends SValidator {
   }
 
   @Override
-  public void setErrorMessage() {
+  protected void setErrorMessage() {
     errorMessage = "The value must be a valid " + (fileType.equals(Type.FILE) ? "file" : "directory");
   }
 

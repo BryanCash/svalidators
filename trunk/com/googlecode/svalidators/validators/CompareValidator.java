@@ -124,7 +124,7 @@ public class CompareValidator extends SValidator {
   }
 
   @Override
-  public void setErrorMessage() {
+  protected void setErrorMessage() {
     errorMessage = "The value must be"
         + (compareType.equals(Type.LESS) ? " less than "
         : compareType.equals(Type.EQUAL) ? " equal to "

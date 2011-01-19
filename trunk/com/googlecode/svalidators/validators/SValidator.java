@@ -60,7 +60,7 @@ public abstract class SValidator {
   /**
    * Sets the rror message of the validator
    */
-  public abstract void setErrorMessage();
+  protected abstract void setErrorMessage();
 
   /**
    * Return the type of the validator
@@ -144,5 +144,13 @@ public abstract class SValidator {
    */
   public String getErrorMessage() {
     return errorMessage;
+  }
+
+  /**
+   * Overide default error message
+   * @param message The new message
+   */
+  public void setErrorMessage(String message){
+    errorMessage = message;
   }
 }
