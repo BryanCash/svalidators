@@ -60,7 +60,7 @@ public class NegativeNumberValidator extends NumericValidator {
   }
 
   @Override
-  public void setErrorMessage() {
+  protected void setErrorMessage() {
     errorMessage = "The value must be a positive number";
   }
 

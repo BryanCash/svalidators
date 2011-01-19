@@ -25,7 +25,7 @@ public class NullValidator extends SValidator {
   }
 
   @Override
-  public void setErrorMessage() {
+  protected void setErrorMessage() {
     errorMessage = "";
   }
 

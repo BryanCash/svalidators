@@ -68,7 +68,7 @@ public class RegularExpressionValidator extends SValidator {
   }
 
   @Override
-  public void setErrorMessage() {
+  protected void setErrorMessage() {
     errorMessage = "Value must " + (isMatch() ? "match " : "include ") + " the regural expression '" + getRegex() + "'";
   }
 
