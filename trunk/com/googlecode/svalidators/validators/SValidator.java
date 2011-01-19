@@ -60,7 +60,7 @@ public abstract class SValidator {
   /**
    * Sets the rror message of the validator
    */
-  protected abstract void setErrorMessage();
+  public abstract void setErrorMessage();
 
   /**
    * Return the type of the validator

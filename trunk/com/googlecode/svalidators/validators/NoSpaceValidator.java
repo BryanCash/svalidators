@@ -47,7 +47,7 @@ public class NoSpaceValidator extends SValidator {
   }
 
   @Override
-  protected void setErrorMessage() {
+  public void setErrorMessage() {
     errorMessage = "The value must not contain spaces";
   }
 

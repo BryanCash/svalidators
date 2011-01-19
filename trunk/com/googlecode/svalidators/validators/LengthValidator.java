@@ -75,7 +75,7 @@ public class LengthValidator extends SValidator {
   }
 
   @Override
-  protected void setErrorMessage() {
+  public void setErrorMessage() {
     if (getLength() > 0) {
       errorMessage = "The value must have a length of " + getLength();
     } else if (getMin() > 0 && getMax() > 0) {

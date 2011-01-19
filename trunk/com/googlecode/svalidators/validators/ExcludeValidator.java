@@ -55,7 +55,7 @@ public class ExcludeValidator extends SValidator{
   }
 
   @Override
-  protected void setErrorMessage() {
+  public void setErrorMessage() {
      errorMessage = "The value must not include any of these characters: " + getExcludeChars();
   }
 

@@ -62,7 +62,7 @@ public class RangeValidator extends NumericValidator {
   }
 
   @Override
-  protected void setErrorMessage() {
+  public void setErrorMessage() {
     if (getMin() != -Double.MAX_VALUE && getMax() != Double.MAX_VALUE) {
       errorMessage = "The value must be between " + getMin() + " and " + getMax();
     } else {

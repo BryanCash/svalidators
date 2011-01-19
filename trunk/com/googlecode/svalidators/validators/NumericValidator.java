@@ -48,7 +48,7 @@ public class NumericValidator extends SValidator {
   }
 
   @Override
-  protected void setErrorMessage() {
+  public void setErrorMessage() {
     errorMessage = "The value must be a number";
   }
 
