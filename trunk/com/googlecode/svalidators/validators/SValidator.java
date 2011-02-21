@@ -47,6 +47,7 @@ public abstract class SValidator {
   public static final String URL = "url";
   public static final String FILEPATH = "filepath";
   public static final String EXCLUDE = "exclude";
+  public static final String CUSTOM = "custom";
 
   /**
    * ABSTRACT METHODS
@@ -58,7 +59,7 @@ public abstract class SValidator {
   public abstract boolean validate();
 
   /**
-   * Sets the rror message of the validator
+   * Sets the Error message of the validator
    */
   protected abstract void setErrorMessage();
 
@@ -80,7 +81,7 @@ public abstract class SValidator {
   
 
    /**
-   * PROPTECTED METHODS
+   * PROTECTED METHODS
    * /
 
   /**
