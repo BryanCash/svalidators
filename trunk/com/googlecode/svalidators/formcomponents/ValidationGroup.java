@@ -130,6 +130,10 @@ public class ValidationGroup {
     JOptionPane.showMessageDialog(null, "Validation succeeded", "Success", JOptionPane.INFORMATION_MESSAGE);
   }
 
+  public String getErrorMessage(){
+    return createErrorMessage(errorMessage);
+  }
+
   private void clearErrors() {
     hasError = false;
     errorMessage = new ArrayList<String>();
